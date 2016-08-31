@@ -77,11 +77,13 @@ int main(int argc, char *argv[]) {
 }
 
 void read_highscores () {
-		
-	//int i = 0;
+
 	int temp1 = 0;
 	int temp2 = 0;
 	char temp[50];
+	int j;
+	int i;
+	int key;
 
 	for(int i = 0; i < 10; i++){
 
@@ -89,10 +91,37 @@ void read_highscores () {
 
         if (i % 2 == 0){
         	scores[temp1] = atoi(temp);
-        	printf("%d\t", scores[temp1]);
+        	//printf("%d\t", scores[temp1]);
         	temp1++;
         } else {
         	strcpy(nicks[temp2], temp);
+        	//printf("%s\n", nicks[temp2]);
+        	temp2++;
+        }
+    }
+	
+	for(j = 1; j < 5; j++) {
+		
+		key = scores[j];
+		i = j - 1;
+		
+		while(i >= 0 && scores[i] < key) {
+			scores[i + 1] = scores[i];
+			i = i - 1;
+		}
+
+		scores[i + 1] = key;
+	}
+
+	temp1 = 0;
+	temp2 = 0;
+
+	for(int i = 0; i < 10; i++){
+
+        if (i % 2 == 0){
+        	printf("%d\t", scores[temp1]);
+        	temp1++;
+        } else {
         	printf("%s\n", nicks[temp2]);
         	temp2++;
         }

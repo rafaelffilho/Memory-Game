@@ -154,9 +154,12 @@
   </object>
   <object class="GtkApplicationWindow" id="window_confirm_n_par">
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
     <property name="window_position">center</property>
     <property name="default_width">150</property>
     <property name="default_height">150</property>
+    <property name="urgency_hint">True</property>
     <signal name="destroy" handler="on_window_confirm_n_par_destroy" swapped="no"/>
     <child>
       <object class="GtkFixed" id="fixed3">
@@ -182,9 +185,12 @@
   </object>
   <object class="GtkApplicationWindow" id="window_confirm_par">
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
     <property name="window_position">center</property>
     <property name="default_width">150</property>
     <property name="default_height">150</property>
+    <property name="urgency_hint">True</property>
     <signal name="destroy" handler="on_window_confirm_par_destroy" swapped="no"/>
     <child>
       <object class="GtkFixed" id="fixed4">
@@ -209,9 +215,18 @@
       </object>
     </child>
   </object>
+  <object class="GtkWindow" id="window_highscores">
+    <property name="can_focus">False</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center-always</property>
+    <child>
+      <placeholder/>
+    </child>
+  </object>
   <object class="GtkWindow" id="window_main">
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Hello World</property>
+    <property name="title" translatable="yes">Jogo da memória</property>
+    <property name="resizable">False</property>
     <property name="window_position">center</property>
     <property name="default_width">640</property>
     <property name="default_height">480</property>
@@ -261,6 +276,8 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="margin_right">200</property>
+            <property name="margin_bottom">150</property>
             <property name="image_position">right</property>
             <signal name="clicked" handler="on_btn_creditos_clicked" swapped="yes"/>
           </object>
@@ -310,8 +327,9 @@ Rafael Froeschlin Filho</property>
   <object class="GtkApplicationWindow" id="window_playgame">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Jogando jogo da memoria</property>
+    <property name="resizable">False</property>
     <property name="window_position">center</property>
-    <property name="default_width">640</property>
+    <property name="default_width">600</property>
     <property name="default_height">480</property>
     <property name="transient_for">window_main</property>
     <signal name="destroy" handler="on_window_playgame_destroy" swapped="no"/>
@@ -932,6 +950,7 @@ Rafael Froeschlin Filho</property>
   </object>
   <object class="GtkApplicationWindow" id="window_nickname">
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
     <property name="window_position">center-always</property>
     <property name="show_menubar">False</property>
     <child>
