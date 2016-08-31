@@ -26,7 +26,7 @@ int points = 0;
 int imageIndex;
 int matrix[6][5][2];
 char nickname[30];
-char nicks[5];
+char nicks[5][30];
 
 void link_images();
 void load_images();
@@ -85,10 +85,6 @@ void read_highscores () {
 
 	for(int i = 0; i < 10; i++){
 
-        //temp[i] = (char*)malloc(50 * sizeof(char));
-
-        //break;
-
         fscanf(file_highscores, "%s", temp);
 
         if (i % 2 == 0){
@@ -96,36 +92,11 @@ void read_highscores () {
         	printf("%d\t", scores[temp1]);
         	temp1++;
         } else {
-        	nicks[temp2] = (char*)malloc(30 * sizeof(char));
-        	nicks[temp2] = temp;
-        	printf("%s\n", temp);
+        	strcpy(nicks[temp2], temp);
+        	printf("%s\n", nicks[temp2]);
         	temp2++;
         }
-
-
-
-        //fgets(temp, 10, (FILE*)file_highscores);
-
-        //printf("%s\n", temp);
     }
-
-	// while(1){
-		
-	// 	fscanf(file_highscores, "%s", temp);
-
-	// 	if(i % 2 == 0){
-	// 		scores[temp1] = atoi(temp);
-	// 		printf("%d\n", scores[temp1]);
-	// 		temp1++;
-	// 	} else {
-	// 		nicks[temp2] = (char*)malloc(sizeof(char));
-	// 		sprintf(nicks[temp2], "%s", temp);
-	// 		// fscanf(temp, "%s", nicks[temp2]);
-	// 		printf("%s\n", nicks[temp2]);
-	// 		temp2++;
-	// 	}
-	// 	i++;
-	// }
 }
 
 //Fechar janela no X
