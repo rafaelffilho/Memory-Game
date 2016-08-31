@@ -1,6 +1,6 @@
 {
-  "name": "Memory-game-in-c",
+  "name": "Memory game in c",
   "tagline": "",
-  "body": "### Welcome to our memory game.\r\nThis memory game was made by Adolpho Piazza and Rafael Froeschlin Filho(me).\r\nIt's a homework of my computer engineering curse.\r\nFeel free to download and test this \"beautiful\" game.",
+  "body": "### Welcome to our memory game.\r\nThis memory game was made by Adolpho Piazza and Rafael Froeschlin Filho(me).\r\nIt's a homework of my computer engineering curse.\r\nFeel free to download and test this \"beautiful\" game.\r\n\r\n> It only has a linux version (works with MAC OS X too)",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
