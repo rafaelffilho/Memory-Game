@@ -932,7 +932,6 @@ Rafael Froeschlin Filho</property>
   </object>
   <object class="GtkApplicationWindow" id="window_nickname">
     <property name="can_focus">False</property>
-    <property name="window_position">center-on-parent</property>
     <property name="show_menubar">False</property>
     <child>
       <object class="GtkFixed" id="fixed5">

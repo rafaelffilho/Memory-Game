@@ -12,13 +12,18 @@ GtkWidget *window_game;
 GtkWidget *window;
 GtkWidget *window_n_par;
 GtkWidget *window_par;
+GtkWidget *window_nickname;
 GtkWidget *score;
+GtkWidget *player;
+GtkEntry *nick_entry;
+GtkEntryBuffer *entry_buffer;
 GtkImage *images[30];
 GtkBuilder *builder;
 int card_temp = 0;
 int points = 0;
 int imageIndex;
 int matrix[6][5][2];
+char nickname[30];
 
 void link_images();
 void load_images();
@@ -26,6 +31,7 @@ void load_image_back();
 void fill_matrix ();
 void on_btn_ok_n_par_clicked ();
 void on_btn_ok_par_clicked ();
+void on_btn_nickname_ok_clicked ();
 
 int main(int argc, char *argv[]) {
 
@@ -44,7 +50,10 @@ int main(int argc, char *argv[]) {
     window_game = GTK_WIDGET(gtk_builder_get_object(builder, "window_playgame"));
     window_par = GTK_WIDGET(gtk_builder_get_object(builder, "window_confirm_par"));
     window_n_par = GTK_WIDGET(gtk_builder_get_object(builder, "window_confirm_n_par"));
+    window_nickname = GTK_WIDGET(gtk_builder_get_object(builder, "window_nickname"));
+    nick_entry = GTK_WIDGET(gtk_builder_get_object(builder, "txt_nick_entry"));
     score = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_score"));
+    player = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_player"));
 
     fill_matrix(matrix);
     link_images();
@@ -72,7 +81,7 @@ void on_window_playgame_destroy () {
 
 void on_btn_playgame_clicked () {
 
-    gtk_widget_show(GTK_WIDGET(window_game));
+    gtk_widget_show(GTK_WIDGET(window_nickname));
  	gtk_widget_hide(window);
 
 }
@@ -82,6 +91,23 @@ void on_btn_creditos_clicked () {
     gtk_dialog_run(GTK_DIALOG(see_credits));
     gtk_widget_hide(see_credits);
 
+}
+
+void on_btn_nickname_ok_clicked () {
+
+	char temp[50];
+
+	entry_buffer = gtk_entry_get_buffer (nick_entry);
+	strcpy(nickname, gtk_entry_buffer_get_text (entry_buffer));
+
+	strcpy(temp, "Jogador: ");
+	strcat(temp, nickname);
+	gtk_label_set_text(GTK_LABEL(player), temp);
+
+	printf("%s\n", nickname);
+
+	gtk_widget_show(GTK_WIDGET(window_game));
+	gtk_widget_hide(window_nickname);
 }
 
 void link_images () {
