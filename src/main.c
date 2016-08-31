@@ -19,11 +19,14 @@ GtkEntry *nick_entry;
 GtkEntryBuffer *entry_buffer;
 GtkImage *images[30];
 GtkBuilder *builder;
+FILE *file_highscores;
+int scores[5];
 int card_temp = 0;
 int points = 0;
 int imageIndex;
 int matrix[6][5][2];
 char nickname[30];
+char nicks[5];
 
 void link_images();
 void load_images();
@@ -32,10 +35,15 @@ void fill_matrix ();
 void on_btn_ok_n_par_clicked ();
 void on_btn_ok_par_clicked ();
 void on_btn_nickname_ok_clicked ();
+void read_highscores ();
 
 int main(int argc, char *argv[]) {
 
     srand(time(NULL));
+
+    file_highscores = fopen("highscores.txt", "r+");
+
+    read_highscores ();
 
     gtk_init(&argc, &argv);
  
@@ -63,9 +71,63 @@ int main(int argc, char *argv[]) {
     gtk_widget_show(window);                
     gtk_main();
  
+    fclose(file_highscores);
+
     return 0;
 }
- 
+
+void read_highscores () {
+		
+	//int i = 0;
+	int temp1 = 0;
+	int temp2 = 0;
+	char temp[50];
+
+	for(int i = 0; i < 10; i++){
+
+        //temp[i] = (char*)malloc(50 * sizeof(char));
+
+        //break;
+
+        fscanf(file_highscores, "%s", temp);
+
+        if (i % 2 == 0){
+        	scores[temp1] = atoi(temp);
+        	printf("%d\t", scores[temp1]);
+        	temp1++;
+        } else {
+        	nicks[temp2] = (char*)malloc(30 * sizeof(char));
+        	nicks[temp2] = temp;
+        	printf("%s\n", temp);
+        	temp2++;
+        }
+
+
+
+        //fgets(temp, 10, (FILE*)file_highscores);
+
+        //printf("%s\n", temp);
+    }
+
+	// while(1){
+		
+	// 	fscanf(file_highscores, "%s", temp);
+
+	// 	if(i % 2 == 0){
+	// 		scores[temp1] = atoi(temp);
+	// 		printf("%d\n", scores[temp1]);
+	// 		temp1++;
+	// 	} else {
+	// 		nicks[temp2] = (char*)malloc(sizeof(char));
+	// 		sprintf(nicks[temp2], "%s", temp);
+	// 		// fscanf(temp, "%s", nicks[temp2]);
+	// 		printf("%s\n", nicks[temp2]);
+	// 		temp2++;
+	// 	}
+	// 	i++;
+	// }
+}
+
 //Fechar janela no X
 void on_window_main_destroy() {
 
