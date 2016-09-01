@@ -28,14 +28,15 @@ int matrix[6][5][2];
 char nickname[30];
 char nicks[5][30];
 
-void link_images();
-void load_images();
-void load_image_back();
+void link_images ();
+void load_images ();
+void load_image_back ();
 void fill_matrix ();
 void on_btn_ok_n_par_clicked ();
 void on_btn_ok_par_clicked ();
 void on_btn_nickname_ok_clicked ();
 void read_highscores ();
+void on_window_nickname_destroy ();
 
 int main(int argc, char *argv[]) {
 
@@ -158,6 +159,12 @@ void read_highscores () {
 void on_window_main_destroy() {
 
     gtk_main_quit();  
+
+}
+
+void on_window_nickname_destroy () {
+
+	gtk_main_quit();
 
 }
 
