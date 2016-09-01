@@ -47,6 +47,7 @@ void on_btn_nickname_ok_clicked ();
 void on_btn_congrats_ok_clicked ();
 void on_btn_exit_clicked ();
 void on_btn_highscores_clicked ();
+void on_btn_highscores_close_clicked ();
 void on_window_nickname_destroy ();
 void on_window_congrats_destroy ();
 void on_window_highscores_destroy ();
@@ -300,13 +301,6 @@ void on_window_playgame_destroy () {
 
 }
 
-void on_window_highscores_destroy (){
-
-	gtk_widget_show(window);
- 	gtk_widget_hide(window_highscores);
-
-}
-
 void on_window_confirm_n_par_destroy () {
 
     on_btn_ok_n_par_clicked();
@@ -365,6 +359,11 @@ void on_btn_highscores_clicked () {
 	gtk_label_set_text(GTK_LABEL(highScore5), temp);
 
 	gtk_widget_show(window_highscores);
+}
+
+void on_btn_highscores_close_clicked () {
+
+	gtk_widget_hide(window_highscores);
 
 }
 

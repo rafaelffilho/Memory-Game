@@ -221,6 +221,7 @@
   </object>
   <object class="GtkWindow" id="window_congrats">
     <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Parabéns</property>
     <property name="resizable">False</property>
     <property name="window_position">center-always</property>
     <signal name="destroy" handler="on_window_congrats_destroy" swapped="no"/>
@@ -262,10 +263,12 @@
   </object>
   <object class="GtkWindow" id="window_highscores">
     <property name="can_focus">False</property>
+    <property name="type">popup</property>
+    <property name="title" translatable="yes">Highscores</property>
     <property name="resizable">False</property>
-    <property name="modal">True</property>
     <property name="window_position">center-always</property>
-    <signal name="destroy" handler="on_window_highscores_destroy" swapped="no"/>
+    <property name="urgency_hint">True</property>
+    <property name="deletable">False</property>
     <child>
       <object class="GtkFixed" id="fixed7">
         <property name="visible">True</property>
@@ -337,6 +340,22 @@
             <property name="y">64</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkButton" id="btn_highscores_close">
+            <property name="label" translatable="yes">Fechar</property>
+            <property name="width_request">150</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="margin_bottom">8</property>
+            <signal name="clicked" handler="on_btn_highscores_close_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">42</property>
+            <property name="y">123</property>
+          </packing>
+        </child>
       </object>
     </child>
   </object>
@@ -347,6 +366,7 @@
     <property name="window_position">center</property>
     <property name="default_width">640</property>
     <property name="default_height">480</property>
+    <property name="icon_name">emblem-favorite</property>
     <signal name="destroy" handler="on_window_main_destroy" swapped="no"/>
     <child>
       <object class="GtkFixed" id="fixed1">
@@ -412,7 +432,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <signal name="clicked" handler="on_btn_highscores_clicked" swapped="no"/>
+            <signal name="clicked" handler="on_btn_highscores_clicked" swapped="yes"/>
           </object>
           <packing>
             <property name="x">218</property>
