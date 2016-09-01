@@ -170,7 +170,8 @@ void on_window_nickname_destroy () {
 
 void on_window_playgame_destroy () {
 
-	gtk_main_quit();
+	gtk_widget_show(window);
+ 	gtk_widget_hide(window_game);
 
 }
 
