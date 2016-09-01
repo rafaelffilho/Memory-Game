@@ -13,6 +13,7 @@ GtkWidget *window;
 GtkWidget *window_n_par;
 GtkWidget *window_par;
 GtkWidget *window_nickname;
+GtkWidget *window_congrats;
 GtkWidget *score;
 GtkWidget *player;
 GtkEntry *nick_entry;
@@ -25,6 +26,7 @@ int card_temp = 0;
 int points = 0;
 int imageIndex;
 int matrix[6][5][2];
+int hits = 0;
 char nickname[30];
 char nicks[5][30];
 
@@ -37,6 +39,7 @@ void on_btn_ok_par_clicked ();
 void on_btn_nickname_ok_clicked ();
 void read_highscores ();
 void on_window_nickname_destroy ();
+void on_window_congrats_destroy ();
 
 int main(int argc, char *argv[]) {
 
@@ -59,6 +62,7 @@ int main(int argc, char *argv[]) {
     window_game = GTK_WIDGET(gtk_builder_get_object(builder, "window_playgame"));
     window_par = GTK_WIDGET(gtk_builder_get_object(builder, "window_confirm_par"));
     window_n_par = GTK_WIDGET(gtk_builder_get_object(builder, "window_confirm_n_par"));
+    window_congrats = GTK_WIDGET(gtk_builder_get_object(builder, "window_congrats"));
     window_nickname = GTK_WIDGET(gtk_builder_get_object(builder, "window_nickname"));
     nick_entry = GTK_WIDGET(gtk_builder_get_object(builder, "txt_nick_entry"));
     score = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_score"));
@@ -153,57 +157,6 @@ void read_highscores () {
         	temp2++;
         }
     }
-}
-
-//Fechar janela no X
-void on_window_main_destroy() {
-
-    gtk_main_quit();  
-
-}
-
-void on_window_nickname_destroy () {
-
-	gtk_main_quit();
-
-}
-
-void on_window_playgame_destroy () {
-
-	gtk_widget_show(window);
- 	gtk_widget_hide(window_game);
-
-}
-
-void on_btn_playgame_clicked () {
-
-    gtk_widget_show(GTK_WIDGET(window_nickname));
- 	gtk_widget_hide(window);
-
-}
-
-void on_btn_creditos_clicked () {
-
-    gtk_dialog_run(GTK_DIALOG(see_credits));
-    gtk_widget_hide(see_credits);
-
-}
-
-void on_btn_nickname_ok_clicked () {
-
-	char temp[50];
-
-	entry_buffer = gtk_entry_get_buffer (nick_entry);
-	strcpy(nickname, gtk_entry_buffer_get_text (entry_buffer));
-
-	strcpy(temp, "Jogador: ");
-	strcat(temp, nickname);
-	gtk_label_set_text(GTK_LABEL(player), temp);
-
-	printf("%s\n", nickname);
-
-	gtk_widget_show(GTK_WIDGET(window_game));
-	gtk_widget_hide(window_nickname);
 }
 
 void link_images () {
@@ -319,6 +272,34 @@ void fill_matrix () {
 
 }
 
+//Fechar janela no X
+void on_window_main_destroy() {
+
+    gtk_main_quit();  
+
+}
+
+void on_window_nickname_destroy () {
+
+	gtk_main_quit();
+
+}
+
+void on_window_congrats_destroy () {
+
+	gtk_widget_show(window);
+	gtk_widget_hide(window_congrats);
+	gtk_widget_hide(window_game);
+
+}
+
+void on_window_playgame_destroy () {
+
+	gtk_widget_show(window);
+ 	gtk_widget_hide(window_game);
+
+}
+
 void on_window_confirm_n_par_destroy () {
 
     on_btn_ok_n_par_clicked();
@@ -330,6 +311,38 @@ void on_window_confirm_par_destroy () {
     on_btn_ok_par_clicked();
 
 }
+
+void on_btn_playgame_clicked () {
+
+    gtk_widget_show(GTK_WIDGET(window_nickname));
+ 	gtk_widget_hide(window);
+
+}
+
+void on_btn_creditos_clicked () {
+
+    gtk_dialog_run(GTK_DIALOG(see_credits));
+    gtk_widget_hide(see_credits);
+
+}
+
+void on_btn_nickname_ok_clicked () {
+
+	char temp[50];
+
+	entry_buffer = gtk_entry_get_buffer (nick_entry);
+	strcpy(nickname, gtk_entry_buffer_get_text (entry_buffer));
+
+	strcpy(temp, "Jogador: ");
+	strcat(temp, nickname);
+	gtk_label_set_text(GTK_LABEL(player), temp);
+
+	printf("%s\n", nickname);
+
+	gtk_widget_show(GTK_WIDGET(window_game));
+	gtk_widget_hide(window_nickname);
+}
+
 
 void on_btn_ok_n_par_clicked () {
 
@@ -349,6 +362,7 @@ void on_btn_ok_n_par_clicked () {
 
 void on_btn_ok_par_clicked () {
 
+	hits++;
     points++;
     char points_c[30];
     char buffer_lbl[30];
@@ -356,6 +370,11 @@ void on_btn_ok_par_clicked () {
     sprintf(buffer_lbl, "%d", points);
     strcat(points_c, buffer_lbl);
     gtk_label_set_text(GTK_LABEL(score), points_c);
+
+    if (hits >= 15) {
+    	gtk_widget_show(window_congrats);
+    }
+
     gtk_widget_hide(window_par);
 
 }
