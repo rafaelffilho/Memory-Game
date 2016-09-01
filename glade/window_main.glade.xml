@@ -1162,20 +1162,39 @@ Rafael Froeschlin Filho</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="margin_left">4</property>
+            <property name="margin_right">8</property>
+            <property name="margin_bottom">7</property>
             <property name="yalign">0.51999998092651367</property>
             <signal name="clicked" handler="on_btn_nickname_ok_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="x">172</property>
-            <property name="y">14</property>
+            <property name="x">208</property>
+            <property name="y">43</property>
           </packing>
         </child>
         <child>
           <object class="GtkEntry" id="txt_nick_entry">
             <property name="width_request">166</property>
-            <property name="height_request">80</property>
+            <property name="height_request">49</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="margin_left">9</property>
+            <property name="margin_right">7</property>
+          </object>
+          <packing>
+            <property name="x">118</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label1">
+            <property name="width_request">172</property>
+            <property name="height_request">46</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">9</property>
+            <property name="label" translatable="yes">Digite seu nome:</property>
+            <property name="xalign">0</property>
           </object>
         </child>
       </object>

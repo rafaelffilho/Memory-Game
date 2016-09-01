@@ -437,12 +437,15 @@ void on_btn_nickname_ok_clicked () {
 
 	char temp[50];
 
+	points = 0;
+
 	entry_buffer = gtk_entry_get_buffer (nick_entry);
 	strcpy(nickname, gtk_entry_buffer_get_text (entry_buffer));
 
 	strcpy(temp, "Jogador: ");
 	strcat(temp, nickname);
 	gtk_label_set_text(GTK_LABEL(player), temp);
+	gtk_label_set_text(GTK_LABEL(score), "Pontos: 0");
 
 	gtk_widget_show(GTK_WIDGET(window_game));
 	gtk_widget_hide(window_nickname);
