@@ -40,6 +40,7 @@ void on_btn_nickname_ok_clicked ();
 void read_highscores ();
 void on_window_nickname_destroy ();
 void on_window_congrats_destroy ();
+void on_btn_congrats_ok_clicked ();
 
 int main(int argc, char *argv[]) {
 
@@ -143,20 +144,6 @@ void read_highscores () {
 		strcpy(nicks[i + 1], temp);
 		scores[i + 1] = key;
 	}
-
-	temp1 = 0;
-	temp2 = 0;
-
-	for(int i = 0; i < 10; i++){
-
-        if (i % 2 == 0){
-        	printf("%d\t", scores[temp1]);
-        	temp1++;
-        } else {
-        	printf("%s\n", nicks[temp2]);
-        	temp2++;
-        }
-    }
 }
 
 void link_images () {
@@ -186,15 +173,15 @@ void load_images () {
 
             if(matrix[i][q][1] == 0){
                 
-             char imageName[30];
-             char buffer[3];
+	            char imageName[30];
+	            char buffer[3];
 
-             strcpy(imageName, "images/card_");
-             sprintf(buffer, "%d", matrix[i][q][0]);
-             strcat(imageName, buffer);
-             strcat(imageName, ".png");
+	            strcpy(imageName, "images/card_");
+	            sprintf(buffer, "%d", matrix[i][q][0]);
+	            strcat(imageName, buffer);
+	            strcat(imageName, ".png");
 
-             gtk_image_set_from_file(images[k], imageName);
+	            gtk_image_set_from_file(images[k], imageName);
 
             } else {
                 
@@ -287,9 +274,7 @@ void on_window_nickname_destroy () {
 
 void on_window_congrats_destroy () {
 
-	gtk_widget_show(window);
-	gtk_widget_hide(window_congrats);
-	gtk_widget_hide(window_game);
+	on_btn_congrats_ok_clicked();
 
 }
 
@@ -309,6 +294,40 @@ void on_window_confirm_n_par_destroy () {
 void on_window_confirm_par_destroy () {
 
     on_btn_ok_par_clicked();
+
+}
+
+void on_btn_congrats_ok_clicked () {
+
+	int j;
+	int i;
+	int key;
+	char temp[30];
+
+	if (points > scores[4]) {
+		scores[4] = points;
+		strcpy(nicks[4], nickname);
+	}
+
+	for(j = 1; j < 5; j++) {
+		
+		key = scores[j];
+		i = j - 1;
+		strcpy(temp, nicks[j]);
+		
+		while(i >= 0 && scores[i] < key) {
+			scores[i + 1] = scores[i];
+			strcpy(nicks[i + 1], nicks[i]);
+			i = i - 1;
+		}
+
+		strcpy(nicks[i + 1], temp);
+		scores[i + 1] = key;
+	}
+
+	gtk_widget_show(window);
+	gtk_widget_hide(window_congrats);
+	gtk_widget_hide(window_game);
 
 }
 
@@ -336,8 +355,6 @@ void on_btn_nickname_ok_clicked () {
 	strcpy(temp, "Jogador: ");
 	strcat(temp, nickname);
 	gtk_label_set_text(GTK_LABEL(player), temp);
-
-	printf("%s\n", nickname);
 
 	gtk_widget_show(GTK_WIDGET(window_game));
 	gtk_widget_hide(window_nickname);

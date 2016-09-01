@@ -1,5 +1,5 @@
-16	test16
-15	test15
-14	test14
-13	test13
-12	test12
+-31	Adolphinho
+-49	Rafael
+-80	test80
+-80	test80
+-80	test80
