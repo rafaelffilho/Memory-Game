@@ -41,7 +41,13 @@ int main(int argc, char *argv[]) {
 
     srand(time(NULL));
 
+    int temp1 = 0;
+	int temp2 = 0;
+	char temp[50];
+
     file_highscores = fopen("highscores.txt", "r+");
+
+    //fscanf(file_highscores, "%s", temp);
 
     read_highscores ();
 
@@ -70,7 +76,34 @@ int main(int argc, char *argv[]) {
     g_object_unref(builder);
     gtk_widget_show(window);                
     gtk_main();
- 
+
+    system("> highscores.txt");
+
+    for(int i = 0; i < 5; i++){
+
+    	char print[50];
+    	char temp[3];
+
+        //if (i % 2 == 0){
+        	strcpy(print, "echo \"");
+        	sprintf(temp, "%d", scores[temp1]);
+        	strcat(print, temp);
+        	strcat(print, "\\t");
+        	//system(print);
+        	//fprintf(file_highscores,"%d\t", scores[temp1]);
+        	
+        //} else {
+        	//strcpy(print, "echo \"");
+        	strcat(print, nicks[temp1]);
+        	strcat(print, "\"");
+        	strcat(print, " >> highscores.txt");
+        	system(print);
+        	//fprintf(file_highscores,"%s\n", nicks[temp2]);
+        	//temp2++;
+        	temp1++;
+        //}
+    }
+
     fclose(file_highscores);
 
     return 0;
