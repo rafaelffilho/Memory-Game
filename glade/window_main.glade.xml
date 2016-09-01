@@ -263,26 +263,32 @@
   <object class="GtkWindow" id="window_highscores">
     <property name="can_focus">False</property>
     <property name="resizable">False</property>
+    <property name="modal">True</property>
     <property name="window_position">center-always</property>
+    <signal name="destroy" handler="on_window_highscores_destroy" swapped="no"/>
     <child>
       <object class="GtkFixed" id="fixed7">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkLabel" id="lbl_higscore_1">
+          <object class="GtkLabel" id="lbl_highscore_1">
             <property name="width_request">100</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_left">20</property>
+            <property name="margin_right">20</property>
             <property name="label" translatable="yes">label</property>
           </object>
         </child>
         <child>
-          <object class="GtkLabel" id="lbl_higscore_2">
+          <object class="GtkLabel" id="lbl_highscore_2">
             <property name="width_request">100</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_left">20</property>
+            <property name="margin_right">20</property>
             <property name="label" translatable="yes">label</property>
           </object>
           <packing>
@@ -290,11 +296,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="lbl_higscore_3">
+          <object class="GtkLabel" id="lbl_highscore_3">
             <property name="width_request">100</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_left">20</property>
+            <property name="margin_right">20</property>
             <property name="label" translatable="yes">label</property>
           </object>
           <packing>
@@ -302,11 +310,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="lbl_higscore_4">
+          <object class="GtkLabel" id="lbl_highscore_4">
             <property name="width_request">100</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_left">20</property>
+            <property name="margin_right">20</property>
             <property name="label" translatable="yes">label</property>
           </object>
           <packing>
@@ -314,11 +324,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="lbl_higscore_5">
+          <object class="GtkLabel" id="lbl_highscore_5">
             <property name="width_request">100</property>
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_left">20</property>
+            <property name="margin_right">20</property>
             <property name="label" translatable="yes">label</property>
           </object>
           <packing>
@@ -346,6 +358,7 @@
             <property name="height_request">61</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_right">21</property>
             <property name="label" translatable="yes">Jogo da Memoria</property>
             <attributes>
               <attribute name="font-desc" value="NanumGothic 40"/>
@@ -369,7 +382,7 @@
           </object>
           <packing>
             <property name="x">218</property>
-            <property name="y">151</property>
+            <property name="y">150</property>
           </packing>
         </child>
         <child>
@@ -382,13 +395,43 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="margin_right">200</property>
-            <property name="margin_bottom">150</property>
+            <property name="margin_bottom">106</property>
             <property name="image_position">right</property>
             <signal name="clicked" handler="on_btn_creditos_clicked" swapped="yes"/>
           </object>
           <packing>
             <property name="x">218</property>
-            <property name="y">232</property>
+            <property name="y">270</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btn_highscores">
+            <property name="label" translatable="yes">Highscores</property>
+            <property name="width_request">200</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_btn_highscores_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">218</property>
+            <property name="y">210</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btn_exit">
+            <property name="label" translatable="yes">Sair</property>
+            <property name="width_request">200</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_btn_exit_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">218</property>
+            <property name="y">330</property>
           </packing>
         </child>
       </object>

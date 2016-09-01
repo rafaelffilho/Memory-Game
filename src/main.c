@@ -14,8 +14,14 @@ GtkWidget *window_n_par;
 GtkWidget *window_par;
 GtkWidget *window_nickname;
 GtkWidget *window_congrats;
+GtkWidget *window_highscores;
 GtkWidget *score;
 GtkWidget *player;
+GtkWidget *highScore1;
+GtkWidget *highScore2;
+GtkWidget *highScore3;
+GtkWidget *highScore4;
+GtkWidget *highScore5;
 GtkEntry *nick_entry;
 GtkEntryBuffer *entry_buffer;
 GtkImage *images[30];
@@ -30,6 +36,7 @@ int hits = 0;
 char nickname[30];
 char nicks[5][30];
 
+void read_highscores ();
 void link_images ();
 void load_images ();
 void load_image_back ();
@@ -37,10 +44,11 @@ void fill_matrix ();
 void on_btn_ok_n_par_clicked ();
 void on_btn_ok_par_clicked ();
 void on_btn_nickname_ok_clicked ();
-void read_highscores ();
+void on_btn_congrats_ok_clicked ();
+void on_btn_exit_clicked ();
+void on_btn_highscores_clicked ();
 void on_window_nickname_destroy ();
 void on_window_congrats_destroy ();
-void on_btn_congrats_ok_clicked ();
 void on_window_highscores_destroy ();
 
 int main(int argc, char *argv[]) {
@@ -66,9 +74,15 @@ int main(int argc, char *argv[]) {
     window_n_par = GTK_WIDGET(gtk_builder_get_object(builder, "window_confirm_n_par"));
     window_congrats = GTK_WIDGET(gtk_builder_get_object(builder, "window_congrats"));
     window_nickname = GTK_WIDGET(gtk_builder_get_object(builder, "window_nickname"));
+    window_highscores = GTK_WIDGET(gtk_builder_get_object(builder, "window_highscores"));
     nick_entry = GTK_WIDGET(gtk_builder_get_object(builder, "txt_nick_entry"));
     score = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_score"));
     player = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_player"));
+	highScore1 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_highscore_1"));
+	highScore2 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_highscore_2"));
+	highScore3 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_highscore_3"));
+	highScore4 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_highscore_4"));
+	highScore5 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_highscore_5"));
 
     fill_matrix(matrix);
     link_images();
@@ -286,6 +300,13 @@ void on_window_playgame_destroy () {
 
 }
 
+void on_window_highscores_destroy (){
+
+	gtk_widget_show(window);
+ 	gtk_widget_hide(window_highscores);
+
+}
+
 void on_window_confirm_n_par_destroy () {
 
     on_btn_ok_n_par_clicked();
@@ -298,7 +319,58 @@ void on_window_confirm_par_destroy () {
 
 }
 
-void on_window_highscores_destroy (){
+void on_btn_highscores_clicked () {
+
+	char temp[50];
+	char buffer[3];
+
+	strcpy(temp, "#1\t|\t");
+	sprintf(buffer, "%d", scores[0]);
+	strcat(temp, buffer);
+	strcat(temp, "\t\t|\t");
+	strcat(temp, nicks[0]);
+
+	gtk_label_set_text(GTK_LABEL(highScore1), temp);
+
+	strcpy(temp, "#2\t|\t");
+	sprintf(buffer, "%d", scores[1]);
+	strcat(temp, buffer);
+	strcat(temp, "\t\t|\t");
+	strcat(temp, nicks[1]);
+
+	gtk_label_set_text(GTK_LABEL(highScore2), temp);
+
+	strcpy(temp, "#3\t|\t");
+	sprintf(buffer, "%d", scores[2]);
+	strcat(temp, buffer);
+	strcat(temp, "\t\t|\t");
+	strcat(temp, nicks[2]);
+
+	gtk_label_set_text(GTK_LABEL(highScore3), temp);
+
+	strcpy(temp, "#4\t|\t");
+	sprintf(buffer, "%d", scores[3]);
+	strcat(temp, buffer);
+	strcat(temp, "\t\t|\t");
+	strcat(temp, nicks[3]);
+
+	gtk_label_set_text(GTK_LABEL(highScore4), temp);
+
+	strcpy(temp, "#5\t|\t");
+	sprintf(buffer, "%d", scores[4]);
+	strcat(temp, buffer);
+	strcat(temp, "\t\t|\t");
+	strcat(temp, nicks[4]);
+
+	gtk_label_set_text(GTK_LABEL(highScore5), temp);
+
+	gtk_widget_show(window_highscores);
+
+}
+
+void on_btn_exit_clicked () {
+
+	gtk_main_quit();
 
 }
 
