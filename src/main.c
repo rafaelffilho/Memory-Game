@@ -41,6 +41,7 @@ void read_highscores ();
 void on_window_nickname_destroy ();
 void on_window_congrats_destroy ();
 void on_btn_congrats_ok_clicked ();
+void on_window_highscores_destroy ();
 
 int main(int argc, char *argv[]) {
 
@@ -294,6 +295,10 @@ void on_window_confirm_n_par_destroy () {
 void on_window_confirm_par_destroy () {
 
     on_btn_ok_par_clicked();
+
+}
+
+void on_window_highscores_destroy (){
 
 }
 
