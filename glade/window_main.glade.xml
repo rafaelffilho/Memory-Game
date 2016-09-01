@@ -156,10 +156,11 @@
     <property name="can_focus">False</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>
-    <property name="window_position">center</property>
     <property name="default_width">150</property>
     <property name="default_height">150</property>
+    <property name="icon">card-2.png</property>
     <property name="urgency_hint">True</property>
+    <property name="decorated">False</property>
     <signal name="destroy" handler="on_window_confirm_n_par_destroy" swapped="no"/>
     <child>
       <object class="GtkFixed" id="fixed3">
@@ -192,7 +193,9 @@
     <property name="window_position">center</property>
     <property name="default_width">150</property>
     <property name="default_height">150</property>
+    <property name="icon">card-2.png</property>
     <property name="urgency_hint">True</property>
+    <property name="decorated">False</property>
     <signal name="destroy" handler="on_window_confirm_par_destroy" swapped="no"/>
     <child>
       <object class="GtkFixed" id="fixed4">
@@ -221,9 +224,11 @@
   </object>
   <object class="GtkWindow" id="window_congrats">
     <property name="can_focus">False</property>
+    <property name="type">popup</property>
     <property name="title" translatable="yes">Parabéns</property>
     <property name="resizable">False</property>
     <property name="window_position">center-always</property>
+    <property name="icon">card-2.png</property>
     <signal name="destroy" handler="on_window_congrats_destroy" swapped="no"/>
     <child>
       <object class="GtkFixed" id="fixed6">
@@ -238,7 +243,7 @@
             <property name="margin_left">9</property>
             <property name="margin_top">7</property>
             <property name="margin_bottom">6</property>
-            <property name="label" translatable="yes">Congratulations! You own3d this game.</property>
+            <property name="label" translatable="yes">Parabéns! Você achou todos os pares.</property>
           </object>
         </child>
         <child>
@@ -267,6 +272,7 @@
     <property name="title" translatable="yes">Highscores</property>
     <property name="resizable">False</property>
     <property name="window_position">center-always</property>
+    <property name="icon">card-2.png</property>
     <property name="urgency_hint">True</property>
     <property name="deletable">False</property>
     <child>
@@ -366,7 +372,7 @@
     <property name="window_position">center</property>
     <property name="default_width">640</property>
     <property name="default_height">480</property>
-    <property name="icon_name">emblem-favorite</property>
+    <property name="icon">card-2.png</property>
     <signal name="destroy" handler="on_window_main_destroy" swapped="no"/>
     <child>
       <object class="GtkFixed" id="fixed1">
@@ -459,6 +465,7 @@
   </object>
   <object class="GtkAboutDialog" id="window_credits">
     <property name="can_focus">False</property>
+    <property name="icon">card-2.png</property>
     <property name="type_hint">normal</property>
     <property name="transient_for">window_main</property>
     <property name="program_name">Jogo da Memoria</property>
@@ -468,7 +475,7 @@
     <property name="website_label" translatable="yes">UNIVALI</property>
     <property name="authors">Adolpho Francisco Zimmermann Piazza
 Rafael Froeschlin Filho</property>
-    <property name="logo_icon_name">face-monkey</property>
+    <property name="logo">card-2.png</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="aboutdialog-vbox1">
         <property name="can_focus">False</property>
@@ -495,9 +502,12 @@ Rafael Froeschlin Filho</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Jogando jogo da memoria</property>
     <property name="resizable">False</property>
-    <property name="window_position">center</property>
+    <property name="window_position">center-on-parent</property>
     <property name="default_width">600</property>
     <property name="default_height">480</property>
+    <property name="icon">card-2.png</property>
+    <property name="decorated">False</property>
+    <property name="deletable">False</property>
     <property name="transient_for">window_main</property>
     <signal name="destroy" handler="on_window_playgame_destroy" swapped="no"/>
     <child>
@@ -1095,7 +1105,7 @@ Rafael Froeschlin Filho</property>
         </child>
         <child>
           <object class="GtkLabel" id="lbl_score">
-            <property name="width_request">250</property>
+            <property name="width_request">237</property>
             <property name="height_request">40</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -1112,6 +1122,22 @@ Rafael Froeschlin Filho</property>
             <property name="y">8</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkButton" id="btn_playgame_exit">
+            <property name="label" translatable="yes">Sair</property>
+            <property name="width_request">200</property>
+            <property name="height_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="margin_bottom">10</property>
+            <signal name="clicked" handler="on_btn_playgame_exit_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">250</property>
+            <property name="y">515</property>
+          </packing>
+        </child>
       </object>
     </child>
   </object>
@@ -1119,6 +1145,9 @@ Rafael Froeschlin Filho</property>
     <property name="can_focus">False</property>
     <property name="resizable">False</property>
     <property name="window_position">center-always</property>
+    <property name="icon">card-2.png</property>
+    <property name="decorated">False</property>
+    <property name="deletable">False</property>
     <property name="show_menubar">False</property>
     <signal name="destroy" handler="on_window_nickname_destroy" swapped="no"/>
     <child>

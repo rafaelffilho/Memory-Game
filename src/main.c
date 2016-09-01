@@ -48,6 +48,7 @@ void on_btn_congrats_ok_clicked ();
 void on_btn_exit_clicked ();
 void on_btn_highscores_clicked ();
 void on_btn_highscores_close_clicked ();
+void on_btn_playgame_exit_clicked ();
 void on_window_nickname_destroy ();
 void on_window_congrats_destroy ();
 void on_window_highscores_destroy ();
@@ -85,9 +86,10 @@ int main(int argc, char *argv[]) {
 	highScore4 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_highscore_4"));
 	highScore5 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_highscore_5"));
 
-    fill_matrix(matrix);
+	gtk_widget_hide_on_delete(window_game);
+	gtk_widget_hide_on_delete(window_nickname);
+
     link_images();
-    load_images(matrix);
 
     g_object_unref(builder);
     gtk_widget_show(window);                
@@ -294,13 +296,6 @@ void on_window_congrats_destroy () {
 
 }
 
-void on_window_playgame_destroy () {
-
-	gtk_widget_show(window);
- 	gtk_widget_hide(window_game);
-
-}
-
 void on_window_confirm_n_par_destroy () {
 
     on_btn_ok_n_par_clicked();
@@ -310,6 +305,20 @@ void on_window_confirm_n_par_destroy () {
 void on_window_confirm_par_destroy () {
 
     on_btn_ok_par_clicked();
+
+}
+
+void on_window_playgame_destroy () {
+
+	gtk_widget_show(window);
+	gtk_widget_hide(window_game);
+
+}
+
+void on_btn_playgame_exit_clicked () {
+
+	gtk_widget_show(window);
+ 	gtk_widget_hide(window_game);
 
 }
 
@@ -409,9 +418,12 @@ void on_btn_congrats_ok_clicked () {
 
 void on_btn_playgame_clicked () {
 
-    gtk_widget_show(GTK_WIDGET(window_nickname));
- 	gtk_widget_hide(window);
+	fill_matrix(matrix);
+    load_images(matrix);
 
+    points = 0;
+
+    gtk_widget_show(GTK_WIDGET(window_nickname));
 }
 
 void on_btn_creditos_clicked () {
