@@ -104,12 +104,15 @@ void read_highscores () {
 		
 		key = scores[j];
 		i = j - 1;
+		strcpy(temp, nicks[j]);
 		
 		while(i >= 0 && scores[i] < key) {
 			scores[i + 1] = scores[i];
+			strcpy(nicks[i + 1], nicks[i]);
 			i = i - 1;
 		}
 
+		strcpy(nicks[i + 1], temp);
 		scores[i + 1] = key;
 	}
 
