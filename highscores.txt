@@ -1,5 +1,5 @@
--16	Rafael
--31	Adolpho
--49	Rafael
--50	Rafael
--63	Adolpho
+-11	Rafael
+-20	Adolpho
+-34	Rafael
+-40	Rafael
+-60	Adolpho

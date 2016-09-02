@@ -101,20 +101,17 @@ int main(int argc, char *argv[]) {
     //Escreve o ranking no arquivo highscores.txt
     for(int i = 0; i < 5; i++){
 
-    	int temp1;
     	char print[50];
     	char temp[3];
 
     	strcpy(print, "echo \"");
-    	sprintf(temp, "%d", scores[temp1]);
+    	sprintf(temp, "%d", scores[i]);
     	strcat(print, temp);
-    	strcat(print, "\\t");
-    	strcat(print, nicks[temp1]);
+    	strcat(print, "\t");
+    	strcat(print, nicks[i]);
     	strcat(print, "\"");
     	strcat(print, " >> highscores.txt");
     	system(print);
-
-    	temp1++;
     }
 
     fclose(file_highscores);
