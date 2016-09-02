@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
 
     srand(time(NULL));
 
-    file_highscores = fopen("highscores.txt", "r+");
+    file_highscores = fopen(".highscores.txt", "r+");
 
     read_highscores ();
 
@@ -95,10 +95,10 @@ int main(int argc, char *argv[]) {
     gtk_widget_show(window);                
     gtk_main();
 
-    //Limpa o arquivo highscores.txt
-    system("> highscores.txt");
+    //Limpa o arquivo .highscores.txt
+    system("> .highscores.txt");
 
-    //Escreve o ranking no arquivo highscores.txt
+    //Escreve o ranking no arquivo .highscores.txt
     for(int i = 0; i < 5; i++){
 
     	char print[50];
@@ -110,7 +110,7 @@ int main(int argc, char *argv[]) {
     	strcat(print, "\t");
     	strcat(print, nicks[i]);
     	strcat(print, "\"");
-    	strcat(print, " >> highscores.txt");
+    	strcat(print, " >> .highscores.txt");
     	system(print);
     }
 
@@ -119,7 +119,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-//Le o ranking atual no arquivo highscores.txt
+//Le o ranking atual no arquivo .highscores.txt
 void read_highscores () {
 
 	int temp1 = 0;
@@ -191,7 +191,7 @@ void load_images () {
 	            char imageName[30];
 	            char buffer[3];
 
-	            strcpy(imageName, "images/card_");
+	            strcpy(imageName, "src/images/card_");
 	            sprintf(buffer, "%d", matrix[i][q][0]);
 	            strcat(imageName, buffer);
 	            strcat(imageName, ".png");
@@ -200,7 +200,7 @@ void load_images () {
 
             } else {
                 
-                gtk_image_set_from_file(images[k], "images/card_back.png");
+                gtk_image_set_from_file(images[k], "src/images/card_back.png");
 
             }
          
@@ -458,8 +458,8 @@ void on_btn_ok_n_par_clicked () {
     sprintf(buffer_lbl, "%d", points);
     strcat(points_c, buffer_lbl);
     gtk_label_set_text(GTK_LABEL(score), points_c);
-    gtk_image_set_from_file(images[imageIndex], "images/card_back.png");
-    gtk_image_set_from_file(images[card_temp-1], "images/card_back.png");
+    gtk_image_set_from_file(images[imageIndex], "src/images/card_back.png");
+    gtk_image_set_from_file(images[card_temp-1], "src/images/card_back.png");
     card_temp = 0;
     gtk_widget_hide(window_n_par);
 
@@ -503,7 +503,7 @@ void on_btn_1_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -518,7 +518,7 @@ void on_btn_1_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -559,7 +559,7 @@ void on_btn_2_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -574,7 +574,7 @@ void on_btn_2_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -615,7 +615,7 @@ void on_btn_3_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -630,7 +630,7 @@ void on_btn_3_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -671,7 +671,7 @@ void on_btn_4_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -686,7 +686,7 @@ void on_btn_4_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -728,7 +728,7 @@ void on_btn_5_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -743,7 +743,7 @@ void on_btn_5_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -784,7 +784,7 @@ void on_btn_6_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -799,7 +799,7 @@ void on_btn_6_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -840,7 +840,7 @@ void on_btn_7_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -855,7 +855,7 @@ void on_btn_7_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -896,7 +896,7 @@ void on_btn_8_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -911,7 +911,7 @@ void on_btn_8_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -952,7 +952,7 @@ void on_btn_9_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -967,7 +967,7 @@ void on_btn_9_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1008,7 +1008,7 @@ void on_btn_10_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1023,7 +1023,7 @@ void on_btn_10_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1064,7 +1064,7 @@ void on_btn_11_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1079,7 +1079,7 @@ void on_btn_11_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1120,7 +1120,7 @@ void on_btn_12_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1135,7 +1135,7 @@ void on_btn_12_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1176,7 +1176,7 @@ void on_btn_13_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1191,7 +1191,7 @@ void on_btn_13_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1232,7 +1232,7 @@ void on_btn_14_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1247,7 +1247,7 @@ void on_btn_14_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1288,7 +1288,7 @@ void on_btn_15_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1303,7 +1303,7 @@ void on_btn_15_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1344,7 +1344,7 @@ void on_btn_16_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1359,7 +1359,7 @@ void on_btn_16_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1400,7 +1400,7 @@ void on_btn_17_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1415,7 +1415,7 @@ void on_btn_17_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1456,7 +1456,7 @@ void on_btn_18_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1471,7 +1471,7 @@ void on_btn_18_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1512,7 +1512,7 @@ void on_btn_19_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1527,7 +1527,7 @@ void on_btn_19_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1568,7 +1568,7 @@ void on_btn_20_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1583,7 +1583,7 @@ void on_btn_20_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1624,7 +1624,7 @@ void on_btn_21_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1639,7 +1639,7 @@ void on_btn_21_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1680,7 +1680,7 @@ void on_btn_22_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1695,7 +1695,7 @@ void on_btn_22_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1736,7 +1736,7 @@ void on_btn_23_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1751,7 +1751,7 @@ void on_btn_23_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1792,7 +1792,7 @@ void on_btn_24_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1807,7 +1807,7 @@ void on_btn_24_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1848,7 +1848,7 @@ void on_btn_25_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1863,7 +1863,7 @@ void on_btn_25_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1904,7 +1904,7 @@ void on_btn_26_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1919,7 +1919,7 @@ void on_btn_26_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1960,7 +1960,7 @@ void on_btn_27_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -1975,7 +1975,7 @@ void on_btn_27_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -2016,7 +2016,7 @@ void on_btn_28_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -2031,7 +2031,7 @@ void on_btn_28_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -2072,7 +2072,7 @@ void on_btn_29_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -2087,7 +2087,7 @@ void on_btn_29_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -2128,7 +2128,7 @@ void on_btn_30_clicked () {
         char imageName[30];
         char buffer[3];
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
@@ -2143,7 +2143,7 @@ void on_btn_30_clicked () {
 
         matrix[(card_temp-1)/5][(card_temp-1)%5][1] = 0;
 
-        strcpy(imageName, "images/card_");
+        strcpy(imageName, "src/images/card_");
         sprintf(buffer, "%d", matrix[imageIndex/5][imageIndex%5][0]);
         strcat(imageName, buffer);
         strcat(imageName, ".png");
