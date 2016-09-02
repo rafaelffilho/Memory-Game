@@ -1,10 +1,10 @@
 FLAGS=`pkg-config --cflags --libs gtk+-3.0` -rdynamic
 
-all: main.o
-	gcc -o Game main.o $(FLAGS) 
+all: src/main.o
+	gcc -o Game src/main.o $(FLAGS) 
     
-main.o: src/main.c
-	gcc -c src/main.c $(FLAGS) -o main.o
+src/main.o: src/main.c
+	gcc -c src/main.c $(FLAGS) -o src/main.o
     
 clean:
-	rm -f *.o Game
+	rm -f *.o src/*.o Game
