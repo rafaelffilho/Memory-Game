@@ -1,11 +1,10 @@
 #include <gtk/gtk.h>
-#include <string.h>
 #include <stdio.h>
-#include "search.h"
-#include "sort.h"
-#include <time.h>
+#include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <time.h>
+#include "search.h"
 
 GtkWidget *see_credits;
 GtkWidget *window_game;
@@ -15,6 +14,7 @@ GtkWidget *window_par;
 GtkWidget *window_nickname;
 GtkWidget *window_congrats;
 GtkWidget *window_highscores;
+GtkWidget *window_instructions;
 GtkWidget *score;
 GtkWidget *player;
 GtkWidget *highScore1;
@@ -22,11 +22,13 @@ GtkWidget *highScore2;
 GtkWidget *highScore3;
 GtkWidget *highScore4;
 GtkWidget *highScore5;
+GtkWidget *instructions;
 GtkEntry *nick_entry;
 GtkEntryBuffer *entry_buffer;
 GtkImage *images[30];
 GtkBuilder *builder;
 FILE *file_highscores;
+
 int scores[5];
 int card_temp = 0;
 int points = 0;
@@ -48,7 +50,9 @@ void on_btn_congrats_ok_clicked ();
 void on_btn_exit_clicked ();
 void on_btn_highscores_clicked ();
 void on_btn_highscores_close_clicked ();
+void on_btn_instructions_close_clicked ();
 void on_btn_playgame_exit_clicked ();
+void on_btn_instructions_clicked ();
 void on_window_nickname_destroy ();
 void on_window_congrats_destroy ();
 void on_window_highscores_destroy ();
@@ -68,24 +72,26 @@ int main(int argc, char *argv[]) {
  
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window_main"));
     gtk_builder_connect_signals(builder, NULL);
- 
-    //Linkando os widgets criados
+
     see_credits = GTK_WIDGET(gtk_builder_get_object(builder, "window_credits"));
-    window_game = GTK_WIDGET(gtk_builder_get_object(builder, "window_playgame"));
-    window_par = GTK_WIDGET(gtk_builder_get_object(builder, "window_confirm_par"));
-    window_n_par = GTK_WIDGET(gtk_builder_get_object(builder, "window_confirm_n_par"));
-    window_congrats = GTK_WIDGET(gtk_builder_get_object(builder, "window_congrats"));
-    window_nickname = GTK_WIDGET(gtk_builder_get_object(builder, "window_nickname"));
-    window_highscores = GTK_WIDGET(gtk_builder_get_object(builder, "window_highscores"));
-    nick_entry = GTK_WIDGET(gtk_builder_get_object(builder, "txt_nick_entry"));
-    score = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_score"));
-    player = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_player"));
+	window_game = GTK_WIDGET(gtk_builder_get_object(builder, "window_playgame"));
+	window_par = GTK_WIDGET(gtk_builder_get_object(builder, "window_confirm_par"));
+	window_n_par = GTK_WIDGET(gtk_builder_get_object(builder, "window_confirm_n_par"));
+	window_congrats = GTK_WIDGET(gtk_builder_get_object(builder, "window_congrats"));
+	window_nickname = GTK_WIDGET(gtk_builder_get_object(builder, "window_nickname"));
+	window_highscores = GTK_WIDGET(gtk_builder_get_object(builder, "window_highscores"));
+	window_instructions = GTK_WIDGET(gtk_builder_get_object(builder, "window_instructions"));
+	nick_entry = GTK_WIDGET(gtk_builder_get_object(builder, "txt_nick_entry"));
+	score = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_score"));
+	player = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_player"));
 	highScore1 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_highscore_1"));
 	highScore2 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_highscore_2"));
 	highScore3 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_highscore_3"));
 	highScore4 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_highscore_4"));
 	highScore5 = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_highscore_5"));
+	instructions = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_instructions"));
 
+ 
 	gtk_widget_hide_on_delete(window_game);
 	gtk_widget_hide_on_delete(window_nickname);
 
@@ -161,6 +167,7 @@ void read_highscores () {
 	}
 }
 
+//Linkando as imagens
 void link_images () {
 
     for (int i = 0; i < 30; i++) {
@@ -178,6 +185,7 @@ void link_images () {
 
 }
 
+//Carregando as imagens
 void load_images () {
 
     int k = 0;
@@ -188,15 +196,15 @@ void load_images () {
 
             if(matrix[i][q][1] == 0){
                 
-	            char imageName[30];
-	            char buffer[3];
+                char imageName[30];
+                char buffer[3];
 
-	            strcpy(imageName, "src/images/card_");
-	            sprintf(buffer, "%d", matrix[i][q][0]);
-	            strcat(imageName, buffer);
-	            strcat(imageName, ".png");
+                strcpy(imageName, "src/images/card_");
+                sprintf(buffer, "%d", matrix[i][q][0]);
+                strcat(imageName, buffer);
+                strcat(imageName, ".png");
 
-	            gtk_image_set_from_file(images[k], imageName);
+                gtk_image_set_from_file(images[k], imageName);
 
             } else {
                 
@@ -271,6 +279,19 @@ void fill_matrix () {
         exit = false;
     }
 
+
+}
+
+void on_btn_instructions_clicked () {
+
+	gtk_widget_show(window_instructions);
+	gtk_label_set_text(GTK_LABEL(instructions), "O jogo da memória é um clássico jogo formado por peças que apresentam uma figura em um dos lados. \nCada figura se repete em duas peças diferentes. Para começar o jogo, as peças são postas com as figuras voltadas\n para baixo, para que não possam ser vistas. O jogador deve, na sua vez, virar duas peças.\n Caso as figuras sejam iguais, ele recolhe consigo esse par.\n Se forem peças diferentes, estas são viradas novamente, e a vez é passada ao participante seguinte.\n Ganha o jogo quem tiver descoberto mais pares, quando todos eles tiverem sido recolhidos.\n");
+
+}
+
+void on_btn_instructions_close_clicked () {
+
+	gtk_widget_hide(window_instructions);
 
 }
 

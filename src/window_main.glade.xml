@@ -367,6 +367,50 @@
       </object>
     </child>
   </object>
+  <!-- Janela de instruções -->
+  <object class="GtkWindow" id="window_instructions">
+    <property name="can_focus">False</property>
+    <property name="type">popup</property>
+    <property name="title" translatable="yes">Instruções</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center-always</property>
+    <property name="icon">card-2.png</property>
+    <property name="urgency_hint">True</property>
+    <property name="deletable">False</property>
+    <child>
+      <object class="GtkFixed" id="fixed8">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkLabel" id="lbl_instructions">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">20</property>
+            <property name="margin_right">20</property>
+            <property name="label" translatable="yes">label</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="btn_instructions_close">
+            <property name="label" translatable="yes">Fechar</property>
+            <property name="width_request">150</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="margin_bottom">8</property>
+            <signal name="clicked" handler="on_btn_instructions_close_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">330</property>
+            <property name="y">123</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkWindow" id="window_main">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Jogo da memória</property>
@@ -445,6 +489,22 @@
           <packing>
             <property name="x">218</property>
             <property name="y">210</property>
+          </packing>
+        </child>
+        <!-- Botão das instruções -->
+        <child>
+          <object class="GtkButton" id="btn_instructions">
+            <property name="label" translatable="yes">Instruções</property>
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_btn_instructions_clicked" swapped="yes"/>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">370</property>
           </packing>
         </child>
         <child>
